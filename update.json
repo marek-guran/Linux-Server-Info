@@ -1,0 +1,5 @@
+{
+    "Title": "Stable 1.0.13 - Android App",
+    "Description": "Refactored code to use new developer name, optimized whole code to use kotlin coroutines instead of async, added support for Android 15, updated dependencies to latest versions and lastly app was removed from Google Play Store. Please use GitHub for latest app updates.",
+    "Version": "1.0.13"
+}

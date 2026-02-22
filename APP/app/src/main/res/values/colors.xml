@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="raspberry">#B70F3F</color>
+    <color name="pill">#1C274C</color>
+    <color name="pill_focused">#2D3F7C</color>
+    <color name="card">#354475</color>
+    <color name="card_items">#424242</color>
+    <color name="text">#000000</color>
+    <color name="text_on_pill">#FFFFFF</color>
+
+    <color name="card1_icon">#FD5F8C</color>
+    <color name="card2_icon">#FD90AF</color>
+
+
+    <color name="custom_background">#E1F3FA</color>
+    <color name="active_item">#85BDD3</color>
+    <color name="item_color">#1C274C</color>
+    <color name="nav_menu_color">#B6D4DF</color>
+
+    <color name="ubuntu">#dd4814</color>
+    <color name="raspbian">#B70F3F</color>
+    <color name="raspbian_green">#46ae4b</color>
+    <color name="linux_default">#000000</color>
+    <color name="debian">#d70a53</color>
+
+    <color name="amd">#000000</color>
+    <color name="broadcom">#000000</color>
+    <color name="broadcom_red">#cc092f</color>
+
+    <color name="background_progress_bar">#85BDD3</color>
+    <color name="usage_progress_bar">#1C274C</color>
+</resources>

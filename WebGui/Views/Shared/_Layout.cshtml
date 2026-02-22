@@ -1,0 +1,123 @@
+﻿@{
+    var darkModeCookie = Context.Request.Cookies["dark-mode"];
+    var theme = "light";
+
+    if (!string.IsNullOrEmpty(darkModeCookie) && darkModeCookie == "true")
+    {
+        theme = "dark";
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/@(theme).css" asp-append-version="true" />
+    <link rel="manifest" href="~/manifest.json">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('js/service-worker.js');
+        } else {
+            console.log("Service worker is not supported.");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="container navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mt-3 mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand ml-3" href="/">
+                    @{
+                        var logoImage = theme == "dark" ? "logo-dark-mode.svg" : "logo.svg";
+                    }
+                    <img src="~/assets/@logoImage" alt="Logo" style="width: 48px; height: 48px;" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                                <div class="icon-text">
+                                    @{
+                                        var cpuIcon = "";
+                                        if (theme == "dark")
+                                        {
+                                            if (ViewBag.cpuInfo.EndsWith("cpu.svg"))
+                                            {
+                                                cpuIcon = "cpu-dark-mode.svg";
+                                            }
+                                            else if (ViewBag.cpuInfo.EndsWith("amd.svg"))
+                                            {
+                                                cpuIcon = "amd-dark-mode.svg";
+                                            }
+                                            else if (ViewBag.cpuInfo.EndsWith("intel.svg"))
+                                            {
+                                                cpuIcon = "intel-dark-mode.svg";
+                                            }
+                                            else
+                                            {
+                                                cpuIcon = ViewBag.cpuInfo;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            cpuIcon = ViewBag.cpuInfo;
+                                        }
+                                    }
+                                    <img src="~/assets/@cpuIcon" alt="Hardware Icon" style="height: 48px; width: 48px;">
+                                    <span>Hardware</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="System" asp-action="Index">
+                                <div class="icon-text">
+                                    @{
+                                        var systemIcon = ViewBag.SvgFile.EndsWith("linux.svg") && theme == "dark" ? "linux.svg" : ViewBag.SvgFile;
+                                    }
+                                    <img src="~/assets/@systemIcon" alt="System Icon" style="height: 48px; width: 48px;">
+                                    <span>System</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">
+                                <div class="icon-text">
+                                    <img src="~/assets/@(theme == "dark" ? "settings-dark-mode.svg" : "settings.svg")" alt="Settings" style="height: 48px; width: 48px;">
+                                    <span>Settings</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer mt-3">
+        <div class="container text-center">
+            &copy; @DateTime.Now.Year - Created and designed by -
+            <a href="https://github.com/marek-guran" target="_blank">
+                <img src="~/assets/MG.ico" alt="MG" style="width: 28px; height: 28px; vertical-align: middle;">
+                Marek Guráň
+            </a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
