@@ -101,4 +101,4 @@ There just change your file locations and start it with:
 and if you want it to start on each boot, use command:
 ```sudo systemctl enable server-info```
 ## Download app
-You can download it from releases section or by Google Play Store. Once installed, head to settings and put there your web server address with full path to file. For example: ```http://10.0.1.1:9002/api```
+You can download it from Google Play Store: https://play.google.com/store/apps/details?id=com.marekguran.serverinfo . Once installed, head to settings and put there your web server address with full path to file. For example: ```http://10.0.1.1:9002/api```
